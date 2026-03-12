@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'main.dart';
 import 'auth_service.dart';
 import 'login_screen.dart';
 import 'favorite_service.dart';
@@ -275,28 +275,13 @@ class ProfileScreen extends StatelessWidget {
 
                           const Divider(height: 1),
 
-                          // Dark Mode demo
-                          ListTile(
-                            leading: const Icon(Icons.dark_mode_outlined),
+                          SwitchListTile(
+                            secondary: const Icon(Icons.dark_mode_outlined),
                             title: const Text('Dark Mode'),
-                            subtitle: const Text('Theo chế độ hệ thống'),
-                            trailing: const Icon(Icons.chevron_right),
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (context) => AlertDialog(
-                                  title: const Text('Dark Mode'),
-                                  content: const Text(
-                                    'Ứng dụng sẽ tự chuyển sang giao diện tối nếu điện thoại đang bật Dark Mode.',
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: const Text('Đóng'),
-                                    ),
-                                  ],
-                                ),
-                              );
+                            subtitle: const Text('Bật / tắt giao diện tối'),
+                            value: Theme.of(context).brightness == Brightness.dark,
+                            onChanged: (value) {
+                              MyApp.of(context)?.toggleDarkMode();
                             },
                           ),
 
@@ -365,7 +350,7 @@ class _StatCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,        
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: Colors.grey.shade200),
         boxShadow: [
@@ -415,7 +400,7 @@ class _SectionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: Colors.grey.shade200),
         boxShadow: [

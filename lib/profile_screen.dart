@@ -272,7 +272,36 @@ class ProfileScreen extends StatelessWidget {
                               );
                             },
                           ),
+
                           const Divider(height: 1),
+
+                          // Dark Mode demo
+                          ListTile(
+                            leading: const Icon(Icons.dark_mode_outlined),
+                            title: const Text('Dark Mode'),
+                            subtitle: const Text('Theo chế độ hệ thống'),
+                            trailing: const Icon(Icons.chevron_right),
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  title: const Text('Dark Mode'),
+                                  content: const Text(
+                                    'Ứng dụng sẽ tự chuyển sang giao diện tối nếu điện thoại đang bật Dark Mode.',
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: const Text('Đóng'),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+
+                          const Divider(height: 1),
+
                           ListTile(
                             leading: const Icon(Icons.info_outline),
                             title: const Text('Giới thiệu ứng dụng'),

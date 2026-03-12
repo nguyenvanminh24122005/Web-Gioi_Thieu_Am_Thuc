@@ -32,9 +32,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: WelcomeScreen(),
+
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: Colors.red,
+      ),
+
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.red,
+      ),
+
+      themeMode: ThemeMode.system, // tự theo hệ thống
+
+      home: const WelcomeScreen(),
     );
   }
 }
